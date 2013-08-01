@@ -27,14 +27,16 @@ void GameMain::onEnter()
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     gameMap = CCTMXTiledMap::create("tileMap/crazyMap.tmx");
-    gameMap->setAnchorPoint( ccp(0.5, 0.5) );
-    gameMap->setPosition( ccp(winSize.width/2, winSize.height/2) );
+    
+    gameMap->setPosition( ccp(winSize.width/2-gameMap->getContentSize().width/2, winSize.height/2-gameMap->getContentSize().height/2) );
     this->addChild( gameMap, 0 );
     m_groundLayer = gameMap->layerNamed("ground");
     m_fMapSize = gameMap->getMapSize();
     
+    
+    
     m_hero = HeroClass::initWithLayer(this);
-    m_hero->g_hero->setPosition( m_groundLayer->positionAt( ccp(0, 0) ) );
+    m_hero->g_hero->setPosition( locationPositionFromTile( ccp(0, 0) ) );
 }
 
 void GameMain::onExit()
@@ -63,6 +65,17 @@ CCPoint GameMain::tilePositionFromLocation(cocos2d::CCPoint location)
     
     pos.x = fmaxf(0, fminf(gameMap->getMapSize().width-1, pos.x));
     pos.y = fmaxf(0, fminf(gameMap->getMapSize().height-1, pos.y));
+    return pos;
+}
+
+CCPoint GameMain::locationPositionFromTile(cocos2d::CCPoint tilePos)
+{
+    CCPoint pos = gameMap->getPosition();
+    float pointWidth = gameMap->getTileSize().width / CC_CONTENT_SCALE_FACTOR();
+    float pointHeight = gameMap->getTileSize().height / CC_CONTENT_SCALE_FACTOR();
+    pos.x += tilePos.x * pointWidth + pointWidth/2;
+    float addHeight = (gameMap->getMapSize().height*pointHeight) - (tilePos.y*pointHeight) - pointHeight/2;
+    pos.y += addHeight;
     return pos;
 }
 
@@ -109,6 +122,6 @@ bool GameMain::isPropAtTileCoordForLayer(char *pProp, cocos2d::CCPoint tileCoord
 bool GameMain::isWallAtTileCoord(cocos2d::CCPoint tileCoord)
 {
     bool ret;
-    ret = isPropAtTileCoordForLayer("Wall", tileCoord, m_groundLayer);
+    ret = isPropAtTileCoordForLayer((char*)"Wall", tileCoord, m_groundLayer);
     return ret;
 }

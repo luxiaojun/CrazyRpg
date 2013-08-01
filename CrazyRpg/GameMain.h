@@ -34,6 +34,7 @@ public:
     
 public:
     CCPoint tilePositionFromLocation(CCPoint location);
+    CCPoint locationPositionFromTile(CCPoint tilePos);
     bool isValidTileCoord(CCPoint tileCoord);
     bool isPropAtTileCoordForLayer(char *pProp, CCPoint tileCoord, CCTMXLayer *pLayer);
     bool isWallAtTileCoord(CCPoint tileCoord);

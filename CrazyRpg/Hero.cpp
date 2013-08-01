@@ -28,7 +28,7 @@ HeroClass* HeroClass::initWithLayer(GameMain *pLayer)
 
 bool HeroClass::init()
 {
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("walk.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("walk/walk.plist");
     g_hero = CCSprite::createWithSpriteFrameName("walkF_1.png");
     gameMainLayer->addChild( g_hero );
     return true;
