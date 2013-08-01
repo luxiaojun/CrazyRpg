@@ -7,6 +7,7 @@
 //
 
 #include "GameMain.h"
+#include "Hero.h"
 
 bool GameMain::init()
 {
@@ -29,8 +30,11 @@ void GameMain::onEnter()
     gameMap->setAnchorPoint( ccp(0.5, 0.5) );
     gameMap->setPosition( ccp(winSize.width/2, winSize.height/2) );
     this->addChild( gameMap, 0 );
-    
+    m_groundLayer = gameMap->layerNamed("ground");
     m_fMapSize = gameMap->getMapSize();
+    
+    m_hero = HeroClass::initWithLayer(this);
+    m_hero->g_hero->setPosition( m_groundLayer->positionAt( ccp(0, 0) ) );
 }
 
 void GameMain::onExit()
@@ -100,4 +104,11 @@ bool GameMain::isPropAtTileCoordForLayer(char *pProp, cocos2d::CCPoint tileCoord
     {
         return true;
     }
+}
+
+bool GameMain::isWallAtTileCoord(cocos2d::CCPoint tileCoord)
+{
+    bool ret;
+    ret = isPropAtTileCoordForLayer("Wall", tileCoord, m_groundLayer);
+    return ret;
 }

@@ -11,10 +11,11 @@
 HeroClass* HeroClass::initWithLayer(GameMain *pLayer)
 {
     HeroClass *pRet = new HeroClass();
-    if( pRet && pRet->init() )
+    if( pRet )
     {
         pRet->autorelease();
         pRet->gameMainLayer = pLayer;
+        pRet->init();
         return pRet;
     }
     else
@@ -27,14 +28,15 @@ HeroClass* HeroClass::initWithLayer(GameMain *pLayer)
 
 bool HeroClass::init()
 {
-    CCSprite::init();
-    
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("walk.plist");
+    g_hero = CCSprite::createWithSpriteFrameName("walkF_1.png");
+    gameMainLayer->addChild( g_hero );
     return true;
 }
 
 void HeroClass::moveToward(cocos2d::CCPoint target)
 {
-    CCPoint fromP = gameMainLayer->tilePositionFromLocation(this->getPosition());
+    CCPoint fromP = gameMainLayer->tilePositionFromLocation(g_hero->getPosition());
     CCPoint toP = gameMainLayer->tilePositionFromLocation(target);
     
     if( fromP.equals(toP) )
@@ -42,7 +44,13 @@ void HeroClass::moveToward(cocos2d::CCPoint target)
         return;
     }
     
+    if( gameMainLayer->isWallAtTileCoord(toP) )
+    {
+        return;
+    }
     
+    CCLog("crazy MoveToward from (%f, %f)", fromP.x, fromP.y);
+    CCLog("crazy MoveToward to (%f, %f)", toP.x, toP.y);
 }
 
 

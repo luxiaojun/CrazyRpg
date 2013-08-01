@@ -14,14 +14,15 @@
 
 USING_NS_CC;
 
-class HeroClass:public CCSprite
+class HeroClass: public CCObject
 {
 public:
     CCArray *spOpenSteps;
     CCArray *spClosedSteps;
     GameMain *gameMainLayer;
+    CCSprite *g_hero;
     
-    virtual bool init();
+    bool init();
     static HeroClass* initWithLayer(GameMain *pLayer);
     void moveToward(CCPoint target);
 };

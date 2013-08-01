@@ -13,6 +13,8 @@
 
 USING_NS_CC;
 
+class HeroClass;
+
 class GameMain:public CCLayer
 {
 public:
@@ -26,12 +28,15 @@ public:
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 
     CCTMXTiledMap *gameMap;
+    CCTMXLayer *m_groundLayer;
     CCSize m_fMapSize;
+    HeroClass *m_hero;
     
 public:
     CCPoint tilePositionFromLocation(CCPoint location);
     bool isValidTileCoord(CCPoint tileCoord);
     bool isPropAtTileCoordForLayer(char *pProp, CCPoint tileCoord, CCTMXLayer *pLayer);
+    bool isWallAtTileCoord(CCPoint tileCoord);
 };
 
 #endif /* defined(__CrazyRpg__GameMain__) */
