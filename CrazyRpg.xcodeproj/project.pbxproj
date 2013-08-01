@@ -280,6 +280,11 @@
 		221DDB3B177C94990053A028 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDB3A177C94990053A028 /* libwebsockets.a */; };
 		221DDB41177C94990053A028 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221DDB40177C94990053A028 /* AppDelegate.cpp */; };
 		221DDB44177C94990053A028 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221DDB43177C94990053A028 /* HelloWorldScene.cpp */; };
+		222EC7481781DD80004FA095 /* GameMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 222EC7461781DD80004FA095 /* GameMain.cpp */; };
+		222EC74B1781E253004FA095 /* tileMap in Resources */ = {isa = PBXBuildFile; fileRef = 222EC7491781E253004FA095 /* tileMap */; };
+		222EC74C1781E253004FA095 /* walk in Resources */ = {isa = PBXBuildFile; fileRef = 222EC74A1781E253004FA095 /* walk */; };
+		226138131785DBA100076A61 /* Hero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226138111785DBA100076A61 /* Hero.cpp */; };
+		22FE7D191784892400F66C0C /* ShortPathStep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FE7D171784892400F66C0C /* ShortPathStep.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -873,6 +878,14 @@
 		221DDB40177C94990053A028 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		221DDB42177C94990053A028 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		221DDB43177C94990053A028 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		222EC7461781DD80004FA095 /* GameMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMain.cpp; sourceTree = "<group>"; };
+		222EC7471781DD80004FA095 /* GameMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMain.h; sourceTree = "<group>"; };
+		222EC7491781E253004FA095 /* tileMap */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tileMap; path = Resources/tileMap; sourceTree = "<group>"; };
+		222EC74A1781E253004FA095 /* walk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = walk; path = Resources/walk; sourceTree = "<group>"; };
+		226138111785DBA100076A61 /* Hero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hero.cpp; sourceTree = "<group>"; };
+		226138121785DBA100076A61 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		22FE7D171784892400F66C0C /* ShortPathStep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShortPathStep.cpp; sourceTree = "<group>"; };
+		22FE7D181784892400F66C0C /* ShortPathStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortPathStep.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -944,6 +957,8 @@
 		221DD7AE177C94940053A028 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				222EC7491781E253004FA095 /* tileMap */,
+				222EC74A1781E253004FA095 /* walk */,
 				221DD7AF177C94940053A028 /* CloseNormal.png */,
 				221DD7B1177C94940053A028 /* CloseSelected.png */,
 				221DD7B3177C94940053A028 /* Default.png */,
@@ -2097,6 +2112,12 @@
 				221DDB40177C94990053A028 /* AppDelegate.cpp */,
 				221DDB42177C94990053A028 /* HelloWorldScene.h */,
 				221DDB43177C94990053A028 /* HelloWorldScene.cpp */,
+				222EC7461781DD80004FA095 /* GameMain.cpp */,
+				222EC7471781DD80004FA095 /* GameMain.h */,
+				22FE7D171784892400F66C0C /* ShortPathStep.cpp */,
+				22FE7D181784892400F66C0C /* ShortPathStep.h */,
+				226138111785DBA100076A61 /* Hero.cpp */,
+				226138121785DBA100076A61 /* Hero.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2164,6 +2185,8 @@
 				221DD7C4177C94940053A028 /* iTunesArtwork in Resources */,
 				221DD863177C94950053A028 /* ChangeLog in Resources */,
 				221DD9D7177C94980053A028 /* project.pbxproj in Resources */,
+				222EC74B1781E253004FA095 /* tileMap in Resources */,
+				222EC74C1781E253004FA095 /* walk in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2423,6 +2446,9 @@
 				221DDB33177C94990053A028 /* cpVect.c in Sources */,
 				221DDB41177C94990053A028 /* AppDelegate.cpp in Sources */,
 				221DDB44177C94990053A028 /* HelloWorldScene.cpp in Sources */,
+				222EC7481781DD80004FA095 /* GameMain.cpp in Sources */,
+				22FE7D191784892400F66C0C /* ShortPathStep.cpp in Sources */,
+				226138131785DBA100076A61 /* Hero.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2496,6 +2522,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CrazyRpg/Frameworks\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CrazyRpg/Prefix.pch;
@@ -2523,6 +2554,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CrazyRpg/Frameworks\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CrazyRpg/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
@@ -2564,6 +2600,7 @@
 				221DDB49177C949A0053A028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

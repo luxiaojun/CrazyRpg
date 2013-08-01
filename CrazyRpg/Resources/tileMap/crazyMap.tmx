@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="8" height="8" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="map_desert" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="map_desert.png" width="265" height="199"/>
+  <tile id="9">
+   <properties>
+    <property name="isWall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="isFlower" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="ground" width="8" height="8">
+  <data encoding="base64" compression="zlib">
+   eJyTY2BgkKMC5qKSvDyZ+nFhQgAAlT0GQg==
+  </data>
+ </layer>
+</map>
