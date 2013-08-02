@@ -8,6 +8,11 @@
 
 #include "Hero.h"
 
+HeroClass::~HeroClass()
+{
+    
+}
+
 HeroClass* HeroClass::initWithLayer(GameMain *pLayer)
 {
     HeroClass *pRet = new HeroClass();
@@ -36,6 +41,7 @@ bool HeroClass::init()
 
 void HeroClass::moveToward(cocos2d::CCPoint target)
 {
+    CCPoint pos = g_hero->getPosition();
     CCPoint fromP = gameMainLayer->tilePositionFromLocation(g_hero->getPosition());
     CCPoint toP = gameMainLayer->tilePositionFromLocation(target);
     

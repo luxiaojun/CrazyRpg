@@ -26,7 +26,7 @@ public:
     virtual void onExit();
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-
+    virtual void draw();
     CCTMXTiledMap *gameMap;
     CCTMXLayer *m_groundLayer;
     CCSize m_fMapSize;

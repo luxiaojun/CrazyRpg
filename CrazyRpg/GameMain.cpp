@@ -25,7 +25,7 @@ void GameMain::onEnter()
 {
     CCLayer::onEnter();
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
+    this->setTouchEnabled(true);
     gameMap = CCTMXTiledMap::create("tileMap/crazyMap.tmx");
     
     gameMap->setPosition( ccp(winSize.width/2-gameMap->getContentSize().width/2, winSize.height/2-gameMap->getContentSize().height/2) );
@@ -37,9 +37,15 @@ void GameMain::onEnter()
     
     m_hero = HeroClass::initWithLayer(this);
     m_hero->g_hero->setPosition( locationPositionFromTile( ccp(0, 0) ) );
+    m_hero->retain();
 }
 
 void GameMain::onExit()
+{
+    
+}
+
+void GameMain::draw()
 {
     
 }
@@ -51,7 +57,10 @@ bool GameMain::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 
 void GameMain::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+    CCPoint local = pTouch->getLocationInView();
+    CCPoint tp = CCDirector::sharedDirector()->convertToGL(local);
     
+    m_hero->moveToward(tp);
 }
 
 CCPoint GameMain::tilePositionFromLocation(cocos2d::CCPoint location)

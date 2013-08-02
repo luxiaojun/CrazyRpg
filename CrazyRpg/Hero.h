@@ -17,6 +17,7 @@ USING_NS_CC;
 class HeroClass: public CCObject
 {
 public:
+    virtual ~HeroClass();
     CCArray *spOpenSteps;
     CCArray *spClosedSteps;
     GameMain *gameMainLayer;
