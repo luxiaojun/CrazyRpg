@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GameMain.h"
+#include "ShortPathStep.h"
 
 USING_NS_CC;
 
@@ -26,6 +27,9 @@ public:
     bool init();
     static HeroClass* initWithLayer(GameMain *pLayer);
     void moveToward(CCPoint target);
+    void insertInOpenSteps(ShortPathStep *step);
+    int computeHScoreFromCoord(CCPoint fromPos, CCPoint toPos);
+    int costToMoveFromStep(ShortPathStep *fromStep, ShortPathStep *toStep);
 };
 
 #endif /* defined(__CrazyRpg__Hero__) */

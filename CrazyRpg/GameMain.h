@@ -38,6 +38,7 @@ public:
     bool isValidTileCoord(CCPoint tileCoord);
     bool isPropAtTileCoordForLayer(char *pProp, CCPoint tileCoord, CCTMXLayer *pLayer);
     bool isWallAtTileCoord(CCPoint tileCoord);
+    void walkableAdjacentTilesCoordForTileCoord(CCPoint tileCoord, CCArray *array);
 };
 
 #endif /* defined(__CrazyRpg__GameMain__) */

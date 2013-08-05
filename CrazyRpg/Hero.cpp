@@ -57,6 +57,117 @@ void HeroClass::moveToward(cocos2d::CCPoint target)
     
     CCLog("crazy MoveToward from (%f, %f)", fromP.x, fromP.y);
     CCLog("crazy MoveToward to (%f, %f)", toP.x, toP.y);
+    
+    bool pathFound = false;
+    spOpenSteps = CCArray::create();
+    spClosedSteps = CCArray::create();
+    spOpenSteps->autorelease();
+    spClosedSteps->autorelease();
+    
+    ShortPathStep *myPos = ShortPathStep::initWithPosition(fromP);
+    insertInOpenSteps( myPos );
+    
+    do
+    {
+        ShortPathStep *curStep = (ShortPathStep*)spOpenSteps->objectAtIndex(0);
+        spClosedSteps->addObject(curStep);
+        spOpenSteps->removeObjectAtIndex(0);
+        
+        if( (curStep->position).equals(toP) )
+        {
+            pathFound = true;
+            ShortPathStep *tmp = curStep;
+            CCLog("PATH FOUND:");
+            do
+            {
+                CCLog("{%0.1f, %0.1f}", tmp->position.x, tmp->position.y);
+                tmp = tmp->parent;
+            } while (tmp != NULL);
+            spOpenSteps->release();
+            spClosedSteps->release();
+            break;
+        }
+        
+        CCArray *adjStep = CCArray::create();
+//        adjStep->autorelease();
+        gameMainLayer->walkableAdjacentTilesCoordForTileCoord(curStep->position, adjStep);
+        for(int i=0;i<adjStep->count();i++)
+        {
+            CCPoint pos = *((CCPoint*)adjStep->objectAtIndex(i));
+            ShortPathStep *step = ShortPathStep::initWithPosition(pos);
+            
+            if( spClosedSteps->containsObject(step) )
+            {
+                step->release();
+                continue;
+            }
+            
+            int moveCost = costToMoveFromStep(curStep, step);
+            
+            unsigned int index = spOpenSteps->indexOfObject(step);
+            if( index == CC_INVALID_INDEX )
+            {
+                step->parent = curStep;
+                step->gScore = curStep->gScore + moveCost;
+                step->hScore = computeHScoreFromCoord(step->position, toP);
+                
+                insertInOpenSteps(step);
+                step->release();
+            }
+            else
+            {
+                step->release();
+                
+                step = (ShortPathStep*)spOpenSteps->objectAtIndex(index);
+                if( (curStep->gScore+moveCost) < step->gScore )
+                {
+                    step->gScore = curStep->gScore + moveCost;
+                    
+                    step->retain();
+                    
+                    spOpenSteps->removeObjectAtIndex(index);
+                    
+                    insertInOpenSteps(step);
+                    
+                    step->release();
+                }
+            }
+        }
+    } while ( spOpenSteps->count() > 0 );
+    
+    
+    
+    
+    if( !pathFound )
+    {
+        CCLog("crazy path not found");
+    }
 }
 
+void HeroClass::insertInOpenSteps(ShortPathStep *step)
+{
+    int stepFScore = step->getFscore();
+    int count = spOpenSteps->count();
+    int i = 0;
+    for(;i<count;i++)
+    {
+        if( stepFScore <= ((ShortPathStep*)spOpenSteps->objectAtIndex(i))->getFscore() )
+        {
+            break;
+        }
+    }
+    
+    spOpenSteps->insertObject((CCObject*)step, i);
+}
 
+int HeroClass::computeHScoreFromCoord(cocos2d::CCPoint fromPos, cocos2d::CCPoint toPos)
+{
+    int ret = 0;
+    ret = abs(fromPos.x - toPos.x) + abs(fromPos.y - fromPos.y);
+    return ret;
+}
+
+int HeroClass::costToMoveFromStep(ShortPathStep *fromStep, ShortPathStep *toStep)
+{
+    return 1;
+}

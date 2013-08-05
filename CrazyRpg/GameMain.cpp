@@ -134,3 +134,30 @@ bool GameMain::isWallAtTileCoord(cocos2d::CCPoint tileCoord)
     ret = isPropAtTileCoordForLayer((char*)"Wall", tileCoord, m_groundLayer);
     return ret;
 }
+
+void GameMain::walkableAdjacentTilesCoordForTileCoord(cocos2d::CCPoint tileCoord, cocos2d::CCArray *array)
+{
+    CCPoint left = CCPointMake(tileCoord.x-1, tileCoord.y);
+    if( isValidTileCoord(left) && !isWallAtTileCoord(left) )
+    {
+        array->addObject((CCObject*)&left);
+    }
+    
+    CCPoint top = CCPointMake(tileCoord.x, tileCoord.y-1);
+    if( isValidTileCoord(top) && !isWallAtTileCoord(top) )
+    {
+        array->addObject((CCObject*)&top);
+    }
+    
+    CCPoint right = CCPointMake(tileCoord.x+1, tileCoord.y);
+    if( isValidTileCoord(right) && !isWallAtTileCoord(right) )
+    {
+        array->addObject((CCObject*)&right);
+    }
+    
+    CCPoint down = CCPointMake(tileCoord.x, tileCoord.y+1);
+    if( isValidTileCoord(down) && !isWallAtTileCoord(down) )
+    {
+        array->addObject((CCObject*)&down);
+    }
+}

@@ -13,6 +13,7 @@ ShortPathStep* ShortPathStep::initWithPosition(cocos2d::CCPoint iPos)
     ShortPathStep *pRet = new ShortPathStep();
     if( pRet != NULL )
     {
+        pRet->autorelease();
         pRet->position = iPos;
         pRet->hScore = 0;
         pRet->gScore = 0;

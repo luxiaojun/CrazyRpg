@@ -7,32 +7,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "CrazyRpg/GameMain.cpp"
-         timestampString = "397107909.729584"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "GameMain::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "CrazyRpg/GameMain.cpp"
-         timestampString = "397105168.279281"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "GameMain::onEnter()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "CrazyRpg/Hero.cpp"
          timestampString = "397107837.598151"
          startingColumnNumber = "9223372036854775807"
@@ -47,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrazyRpg/Hero.cpp"
-         timestampString = "397107837.598151"
+         timestampString = "397107829.422253"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "36"
-         endingLineNumber = "36"
-         landmarkName = "HeroClass::init()"
+         startingLineNumber = "12"
+         endingLineNumber = "12"
+         landmarkName = "HeroClass::~HeroClass()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -60,12 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrazyRpg/Hero.cpp"
-         timestampString = "397107829.422253"
+         timestampString = "397402388.095408"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "12"
-         endingLineNumber = "12"
-         landmarkName = "HeroClass::~HeroClass()"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "HeroClass::moveToward(cocos2d::CCPoint target)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

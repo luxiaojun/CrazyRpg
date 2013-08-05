@@ -13,7 +13,7 @@
 
 USING_NS_CC;
 
-class ShortPathStep
+class ShortPathStep: public CCObject
 {
 public:
     CCPoint position;
