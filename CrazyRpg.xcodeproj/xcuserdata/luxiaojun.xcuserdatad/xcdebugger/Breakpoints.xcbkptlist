@@ -33,25 +33,12 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "CrazyRpg/GameMain.cpp"
-         timestampString = "397486884.940281"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
-         landmarkName = "GameMain::walkableAdjacentTilesCoordForTileCoord(cocos2d::CCPoint tileCoord, cocos2d::CCPoint *array)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "CrazyRpg/Hero.cpp"
-         timestampString = "397490349.251489"
+         timestampString = "397500855.818976"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "96"
-         endingLineNumber = "96"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
          landmarkName = "HeroClass::moveToward(cocos2d::CCPoint target)"
          landmarkType = "5">
       </FileBreakpoint>

@@ -94,48 +94,50 @@ void HeroClass::moveToward(cocos2d::CCPoint target)
         
         gameMainLayer->walkableAdjacentTilesCoordForTileCoord(curStep->position, adjStep);
         CCLog("dfdfd");
-//        for(int i=0;i<adjStep->count();i++)
-//        {
-//            CCPoint pos = *((CCPoint*)adjStep->objectAtIndex(i));
-//            ShortPathStep *step = ShortPathStep::initWithPosition(pos);
-//            
-//            if( spClosedSteps->containsObject(step) )
-//            {
-//                step->release();
-//                continue;
-//            }
-//            
-//            int moveCost = costToMoveFromStep(curStep, step);
-//            
-//            unsigned int index = spOpenSteps->indexOfObject(step);
-//            if( index == CC_INVALID_INDEX )
-//            {
-//                step->parent = curStep;
-//                step->gScore = curStep->gScore + moveCost;
-//                step->hScore = computeHScoreFromCoord(step->position, toP);
-//                
-//                insertInOpenSteps(step);
-//                step->release();
-//            }
-//            else
-//            {
-//                step->release();
-//                
-//                step = (ShortPathStep*)spOpenSteps->objectAtIndex(index);
-//                if( (curStep->gScore+moveCost) < step->gScore )
-//                {
-//                    step->gScore = curStep->gScore + moveCost;
-//                    
-//                    step->retain();
-//                    
-//                    spOpenSteps->removeObjectAtIndex(index);
-//                    
-//                    insertInOpenSteps(step);
-//                    
-//                    step->release();
-//                }
-//            }
-//        }
+        for(int i=0;i<4;i++)
+        {
+            CCPoint pos = adjStep[i];
+            if( pos.x < 0 && pos.y < 0 )
+                continue;
+            ShortPathStep *step = ShortPathStep::initWithPosition(pos);
+            
+            if( spClosedSteps->containsObject(step) )
+            {
+                step->release();
+                continue;
+            }
+            
+            int moveCost = costToMoveFromStep(curStep, step);
+            
+            unsigned int index = spOpenSteps->indexOfObject(step);
+            if( index == CC_INVALID_INDEX )
+            {
+                step->parent = curStep;
+                step->gScore = curStep->gScore + moveCost;
+                step->hScore = computeHScoreFromCoord(step->position, toP);
+                
+                insertInOpenSteps(step);
+                step->release();
+            }
+            else
+            {
+                step->release();
+                
+                step = (ShortPathStep*)spOpenSteps->objectAtIndex(index);
+                if( (curStep->gScore+moveCost) < step->gScore )
+                {
+                    step->gScore = curStep->gScore + moveCost;
+                    
+                    step->retain();
+                    
+                    spOpenSteps->removeObjectAtIndex(index);
+                    
+                    insertInOpenSteps(step);
+                    
+                    step->release();
+                }
+            }
+        }
     } while ( spOpenSteps->count() > 0 );
     
     
